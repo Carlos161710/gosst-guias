@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<!-- saved from url=(0073)file:///Users/carlosaramburuguarda/Downloads/Guia_Rapida_GOSST_MoC_4.html -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Guía Rápida — GOSST MoC</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  @page { size: A4 landscape; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    width: 297mm; height: 210mm;
+    overflow: hidden; background: #fff; color: #1a1a2e;
+  }
+
+  .page {
+    display: grid;
+    grid-template-rows: 11mm 1fr 26mm;
+    height: 210mm; width: 297mm;
+    padding: 3.5mm 4mm 3.5mm 4mm;
+    gap: 2mm;
+  }
+
+  /* HEADER */
+  .header {
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 2px solid #0f3460; padding-bottom: 2mm;
+  }
+  .header-left { display: flex; align-items: center; gap: 2.5mm; }
+  .logo-icon {
+    width: 7mm; height: 7mm; background: #e94560; border-radius: 1.8mm;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 4mm; font-weight: 800; color: #fff; flex-shrink: 0;
+  }
+  .logo-text { font-size: 3.8mm; font-weight: 800; color: #0f3460; }
+  .logo-sub { font-size: 1.9mm; color: #999; margin-top: 0.2mm; }
+  .sep { width: 0.3mm; height: 6mm; background: #ddd; margin: 0 2mm; }
+  .header-title { font-size: 4.8mm; font-weight: 800; color: #0f3460; line-height: 1; }
+  .header-sub { font-size: 2mm; color: #777; margin-top: 0.4mm; }
+  .ia-badge {
+    background: #e94560; color: #fff; font-size: 1.9mm; font-weight: 700;
+    padding: 1mm 2.5mm; border-radius: 10mm; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+
+  /* STEPS */
+  .steps { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1.8mm; }
+
+  .step {
+    border-radius: 2mm; padding: 2.8mm 2.8mm;
+    display: flex; flex-direction: column; gap: 0;
+    position: relative; overflow: hidden;
+  }
+  .step::after {
+    content: '›'; position: absolute; right: -1.5mm; top: 36%;
+    font-size: 3.8mm; font-weight: 700; z-index: 2;
+  }
+  .step:last-child::after { display: none; }
+
+  .s1 { background: #e8f4fd; } .s1::after { color: #93c5e8; }
+  .s2 { background: #fef3e2; } .s2::after { color: #f5c87a; }
+  .s3 { background: #fde8e8; } .s3::after { color: #f0a0a0; }
+  .s4 { background: #e8fdf0; } .s4::after { color: #80d4a0; }
+  .s5 { background: #f0e8fd; } .s5::after { color: #c0a0e8; }
+  .s6 { background: #e8f0fd; }
+
+  .step-num { font-size: 1.9mm; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1.5mm; }
+  .s1 .step-num { color: #1a7ab5; } .s2 .step-num { color: #c47a00; }
+  .s3 .step-num { color: #b52020; } .s4 .step-num { color: #1a7a45; }
+  .s5 .step-num { color: #6a20b5; } .s6 .step-num { color: #1a3ab5; }
+
+  .step-icon { font-size: 5.5mm; line-height: 1; margin-bottom: 1.5mm; }
+  .step-title { font-size: 2.9mm; font-weight: 700; line-height: 1.2; color: #1a1a2e; margin-bottom: 1.8mm; }
+  .step-body { font-size: 2.2mm; line-height: 1.5; color: #333; margin-bottom: 2mm; }
+
+  /* bullets dentro de cada paso */
+  .step-bullets { list-style: none; margin-bottom: 2mm; }
+  .step-bullets li {
+    font-size: 2mm; color: #555; line-height: 1.4;
+    padding-left: 2.5mm; position: relative; margin-bottom: 0.8mm;
+  }
+  .step-bullets li::before {
+    content: '✓'; position: absolute; left: 0;
+    font-size: 1.8mm; font-weight: 700;
+  }
+  .s1 .step-bullets li::before { color: #1a7ab5; }
+  .s2 .step-bullets li::before { color: #c47a00; }
+  .s3 .step-bullets li::before { color: #b52020; }
+  .s4 .step-bullets li::before { color: #1a7a45; }
+  .s5 .step-bullets li::before { color: #6a20b5; }
+  .s6 .step-bullets li::before { color: #1a3ab5; }
+
+  .step-footer {
+    margin-top: auto; padding-top: 1.8mm;
+    border-top: 0.3mm solid rgba(0,0,0,0.08);
+  }
+  .step-ia {
+    display: inline-flex; align-items: center; gap: 1mm;
+    background: rgba(233,69,96,0.1); color: #c0143c;
+    font-size: 1.9mm; font-weight: 600; padding: 0.7mm 1.5mm;
+    border-radius: 1mm; margin-bottom: 1mm; white-space: nowrap;
+  }
+  .step-who { font-size: 1.9mm; font-weight: 500; color: #888; }
+
+  /* FRANJA INFERIOR */
+  .bottom {
+    display: grid;
+    grid-template-columns: 1fr 0.3mm 58mm 0.3mm 38mm;
+    gap: 3mm; align-items: center;
+    background: #f0f4fa; border-radius: 2mm; padding: 2.5mm 4mm;
+  }
+  .div-v { background: #ccc; height: 100%; }
+
+  .why-title { font-size: 2.3mm; font-weight: 700; color: #0f3460; margin-bottom: 1mm; }
+  .why-text { font-size: 2mm; line-height: 1.45; color: #444; }
+  .why-text strong { color: #0f3460; }
+
+  .roles-title { font-size: 1.9mm; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1.2mm; }
+  .roles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8mm 3mm; }
+  .role-item { display: flex; align-items: flex-start; gap: 1.5mm; }
+  .role-dot { width: 1.8mm; height: 1.8mm; border-radius: 50%; margin-top: 0.8mm; flex-shrink: 0; }
+  .role-name { font-size: 2mm; font-weight: 600; color: #1a1a2e; }
+  .role-desc { font-size: 1.8mm; color: #888; }
+
+  .cta-block { display: flex; flex-direction: column; align-items: center; gap: 1.8mm; text-align: center; }
+  .url-badge { background: #0f3460; color: #fff; font-size: 3mm; font-weight: 800; padding: 2mm 5mm; border-radius: 10mm; }
+  .cta-text { font-size: 1.9mm; color: #666; line-height: 1.4; }
+  .cta-text strong { color: #e94560; }
+  .normas { font-size: 1.7mm; color: #aaa; line-height: 1.4; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <div class="logo-icon">G</div>
+      <div>
+        <div class="logo-text">GOSST MoC</div>
+        <div class="logo-sub">gosst.io · Aswan Technologies</div>
+      </div>
+      <div class="sep"></div>
+      <div>
+        <div class="header-title">¿Cómo es el proceso de gestión del cambio?</div>
+        <div class="header-sub">Guía rápida para colaboradores</div>
+      </div>
+    </div>
+    <div class="ia-badge">✦ Con inteligencia artificial integrada</div>
+  </div>
+
+  <!-- PASOS -->
+  <div class="steps">
+
+    <div class="step s1">
+      <div class="step-num">Paso 1</div>
+      <div class="step-icon">🏢</div>
+      <div class="step-title">Organización y alcance</div>
+      <div class="step-body">Ingresas los datos de tu empresa y seleccionas qué áreas del sistema de gestión involucra el cambio.</div>
+      <ul class="step-bullets">
+        <li>Nombre y código CIIU de la empresa</li>
+        <li>Dimensiones afectadas: SST, Calidad, Ambiental, Seguridad de procesos</li>
+        <li>Adjunta documentos de referencia para enriquecer el análisis</li>
+        <li>La IA lee los archivos y prepara el contexto para los siguientes pasos</li>
+      </ul>
+      <div class="step-footer">
+        <div class="step-ia">✦ IA lee documentos adjuntos</div>
+        <div class="step-who">👤 Solicitante</div>
+      </div>
+    </div>
+
+    <div class="step s2">
+      <div class="step-num">Paso 2</div>
+      <div class="step-icon">📋</div>
+      <div class="step-title">Solicitud del cambio</div>
+      <div class="step-body">Describes qué va a cambiar, por qué, dónde y cuándo. La IA puede completar los campos a partir de tu descripción libre.</div>
+      <ul class="step-bullets">
+        <li>Nombre del cambio con formato estándar</li>
+        <li>Descripción técnica y situación actual</li>
+        <li>Beneficios esperados del cambio</li>
+        <li>Duración: permanente o temporal</li>
+        <li>Indicar si hay urgencia y justificarla</li>
+      </ul>
+      <div class="step-footer">
+        <div class="step-ia">✦ IA sugiere nombre y descripción</div>
+        <div class="step-who">👤 Solicitante</div>
+      </div>
+    </div>
+
+    <div class="step s3">
+      <div class="step-num">Paso 3</div>
+      <div class="step-icon">📊</div>
+      <div class="step-title">Evaluación y metodología</div>
+      <div class="step-body">La IA responde un cuestionario estructurado y clasifica el nivel de riesgo del cambio automáticamente.</div>
+      <ul class="step-bullets">
+        <li>Nivel Bajo → Checklist estructurado</li>
+        <li>Nivel Moderado → What-If / FMEA</li>
+        <li>Nivel Alto → HAZOP</li>
+        <li>Nivel Crítico → Bow-Tie Analysis</li>
+        <li>Puedes ajustar la metodología con justificación</li>
+      </ul>
+      <div class="step-footer">
+        <div class="step-ia">✦ IA clasifica y recomienda método</div>
+        <div class="step-who">👤 Coordinador del cambio</div>
+      </div>
+    </div>
+
+    <div class="step s4">
+      <div class="step-num">Paso 4</div>
+      <div class="step-icon">⚠️</div>
+      <div class="step-title">Riesgos y planes de acción</div>
+      <div class="step-body">La IA genera los riesgos del cambio con causa, evento y consecuencia. El equipo los revisa y aprueba.</div>
+      <ul class="step-bullets">
+        <li>Riesgos generados según metodología asignada</li>
+        <li>Planes de acción con responsable y plazo</li>
+        <li>Revisión técnica obligatoria para nivel Alto/Crítico</li>
+        <li>Mínimo 2 revisores aprobados para avanzar</li>
+        <li>Todo queda trazable en el expediente</li>
+      </ul>
+      <div class="step-footer">
+        <div class="step-ia">✦ IA genera riesgos y planes</div>
+        <div class="step-who">👤 Coordinador + Revisores técnicos</div>
+      </div>
+    </div>
+
+    <div class="step s5">
+      <div class="step-num">Paso 5</div>
+      <div class="step-icon">🔍</div>
+      <div class="step-title">Implementación y RPA</div>
+      <div class="step-body">Registras fechas y completas el checklist de Revisión Pre-Arranque antes de ejecutar el cambio.</div>
+      <ul class="step-bullets">
+        <li>Fechas de inicio y fin de implementación</li>
+        <li>Plan de comunicación y formación del personal</li>
+        <li>Checklist RPA por categorías: Seguridad, Calidad, Operaciones…</li>
+        <li>Ítems Bloqueantes deben estar conformes</li>
+        <li>Autorización formal antes de arrancar</li>
+      </ul>
+      <div class="step-footer">
+        <div class="step-ia">✦ IA genera checklist RPA</div>
+        <div class="step-who">👤 Verificador RPA + Autorizador</div>
+      </div>
+    </div>
+
+    <div class="step s6">
+      <div class="step-num">Paso 6</div>
+      <div class="step-icon">✅</div>
+      <div class="step-title">Cierre y lecciones aprendidas</div>
+      <div class="step-body">Confirmas que el cambio funcionó, documentas lo aprendido y cierras el expediente formalmente.</div>
+      <ul class="step-bullets">
+        <li>Período de observación mínimo 1 mes (nivel Alto/Crítico)</li>
+        <li>Verificación de planes ejecutados y documentos actualizados</li>
+        <li>Lecciones aprendidas generadas con IA</li>
+        <li>Firma formal de cierre del expediente</li>
+        <li>Archivo digital por 5 años según normativa</li>
+      </ul>
+      <div class="step-footer">
+        <div class="step-ia">✦ IA sugiere lecciones aprendidas</div>
+        <div class="step-who">👤 Coordinador + Autorizador</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FRANJA INFERIOR -->
+  <div class="bottom">
+
+    <div>
+      <div class="why-title">💡 ¿Para qué sirve la gestión del cambio?</div>
+      <div class="why-text">Cuando algo cambia en la empresa —un equipo, un proceso, un proveedor, una persona clave— sin planificarlo bien, pueden aparecer errores de calidad, incumplimientos legales, problemas de seguridad o paralizaciones inesperadas. <strong>Gestionar el cambio</strong> es asegurarse de que cada modificación se evalúe, apruebe y ejecute de forma ordenada, con todos informados y los riesgos controlados. <strong>Regla clave: si algo va a cambiar, primero abre un MoC en GOSST.</strong></div>
+    </div>
+
+    <div class="div-v"></div>
+
+    <div>
+      <div class="roles-title">¿Quiénes participan?</div>
+      <div class="roles-grid">
+        <div class="role-item">
+          <div class="role-dot" style="background:#e94560"></div>
+          <div><div class="role-name">Solicitante</div><div class="role-desc">Identifica el cambio y lo inicia</div></div>
+        </div>
+        <div class="role-item">
+          <div class="role-dot" style="background:#4a90e2"></div>
+          <div><div class="role-name">Verificador RPA</div><div class="role-desc">Confirma controles en campo</div></div>
+        </div>
+        <div class="role-item">
+          <div class="role-dot" style="background:#f5a623"></div>
+          <div><div class="role-name">Coordinador del cambio</div><div class="role-desc">Gestiona el proceso completo</div></div>
+        </div>
+        <div class="role-item">
+          <div class="role-dot" style="background:#bd10e0"></div>
+          <div><div class="role-name">Autorizador</div><div class="role-desc">Da el visto bueno final</div></div>
+        </div>
+        <div class="role-item">
+          <div class="role-dot" style="background:#7ed321"></div>
+          <div><div class="role-name">Revisor técnico</div><div class="role-desc">Aprueba riesgos por especialidad</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="div-v"></div>
+
+    <div class="cta-block">
+      <div class="url-badge">gosst.io</div>
+      <div class="cta-text">¿Dudas? Usa el botón <strong>Feedback</strong><br>dentro de la plataforma.</div>
+      <div class="normas">ISO 45001 · ISO 9001 · ISO 14001<br>ISO 31000 · CCPS MoC Guidelines</div>
+    </div>
+
+  </div>
+</div>
+
+
+</body></html>

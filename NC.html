@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía Rápida — GOSST NC</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f8fafc;
+    color: #1e293b;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: #fff;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-logo {
+    width: 32px; height: 32px;
+    background: #172554;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 800; font-size: 13px;
+  }
+  .header-brand { font-weight: 700; font-size: 15px; color: #172554; }
+  .header-sub { color: #64748b; font-size: 12px; }
+  .header-badge {
+    margin-left: auto;
+    background: #172554;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #172554 0%, #1e3a8a 60%, #0f766e 100%);
+    color: #fff;
+    padding: 40px 24px 32px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .hero p {
+    color: #bfdbfe;
+    font-size: 14px;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  /* ── STEPS GRID ── */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0;
+    border-bottom: 1px solid #e2e8f0;
+    background: #fff;
+  }
+
+  .step-col {
+    padding: 20px 16px 16px;
+    border-right: 1px solid #e2e8f0;
+    position: relative;
+  }
+  .step-col:last-child { border-right: none; }
+
+  .step-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .step-icon { font-size: 24px; margin-bottom: 10px; display: block; }
+  .step-title { font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 8px; line-height: 1.3; }
+  .step-desc { font-size: 12px; color: #475569; margin-bottom: 12px; line-height: 1.5; }
+
+  .step-checks { list-style: none; margin-bottom: 14px; }
+  .step-checks li {
+    font-size: 11.5px;
+    color: #334155;
+    padding: 2px 0 2px 16px;
+    position: relative;
+    line-height: 1.4;
+  }
+  .step-checks li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #16a34a;
+    font-weight: 700;
+    font-size: 11px;
+  }
+
+  .step-footer {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 6px 16px;
+    border-top: 1px solid #f1f5f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .step-ia {
+    font-size: 11px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .step-ia::before { content: '+'; font-weight: 800; }
+  .step-role {
+    font-size: 11px;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+  .step-role::before { content: '👤'; font-size: 10px; }
+
+  /* Step color themes */
+  .step-1 .step-badge { color: #1d4ed8; }
+  .step-1 .step-ia { color: #1d4ed8; }
+  .step-1 { background: #f0f9ff; }
+
+  .step-2 .step-badge { color: #7c3aed; }
+  .step-2 .step-ia { color: #7c3aed; }
+  .step-2 { background: #faf5ff; }
+
+  .step-3 .step-badge { color: #0d9488; }
+  .step-3 .step-ia { color: #0d9488; }
+  .step-3 { background: #f0fdfa; }
+
+  .step-4 .step-badge { color: #d97706; }
+  .step-4 .step-ia { color: #d97706; }
+  .step-4 { background: #fffbeb; }
+
+  .step-5 .step-badge { color: #db2777; }
+  .step-5 .step-ia { color: #db2777; }
+  .step-5 { background: #fdf2f8; }
+
+  .step-6 .step-badge { color: #16a34a; }
+  .step-6 .step-ia { color: #16a34a; }
+  .step-6 { background: #f0fdf4; }
+
+  /* ── BOTTOM INFO BAR ── */
+  .info-bar {
+    background: #fff;
+    border-top: 1px solid #e2e8f0;
+    padding: 20px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .info-block h4 {
+    font-size: 12px;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .info-block p {
+    font-size: 12.5px;
+    color: #475569;
+    line-height: 1.6;
+  }
+  .info-block p strong { color: #0f172a; }
+
+  .participants-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .participant {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 12px;
+  }
+  .participant-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+  .participant-name { font-weight: 600; color: #0f172a; }
+  .participant-desc { color: #64748b; font-size: 11px; }
+
+  .cta-block {
+    background: #172554;
+    color: #fff;
+    border-radius: 12px;
+    padding: 16px 20px;
+    text-align: center;
+    min-width: 160px;
+  }
+  .cta-block .cta-url {
+    font-size: 15px;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+  .cta-block .cta-sub {
+    font-size: 11px;
+    color: #93c5fd;
+    margin-bottom: 10px;
+  }
+  .cta-block .cta-normas {
+    font-size: 10px;
+    color: #475569;
+    line-height: 1.6;
+  }
+
+  /* normas badges */
+  .normas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 4px;
+  }
+  .norma-badge {
+    background: #f1f5f9;
+    color: #334155;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .steps-grid { grid-template-columns: repeat(3, 1fr); }
+    .info-bar { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .steps-grid { grid-template-columns: repeat(2, 1fr); }
+    .info-bar { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-logo">G</div>
+  <div>
+    <div class="header-brand">GOSST NC</div>
+    <div class="header-sub">gosst.io · Aswan Technologies</div>
+  </div>
+  <div class="header-badge">+ CON INTELIGENCIA ARTIFICIAL INTEGRADA</div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>¿Cómo funciona la gestión de No Conformidades?</h1>
+  <p>Guía rápida para colaboradores — registra, analiza y cierra hallazgos de forma trazable y colaborativa en 6 pasos.</p>
+</div>
+
+<!-- STEPS GRID -->
+<div class="steps-grid">
+
+  <!-- PASO 1 -->
+  <div class="step-col step-1">
+    <div class="step-badge">PASO 1</div>
+    <span class="step-icon">🔍</span>
+    <div class="step-title">Identificación y clasificación</div>
+    <div class="step-desc">Cualquier colaborador abre el expediente en GOSST NC, describe el hallazgo y asigna un responsable. La IA clasifica automáticamente.</div>
+    <ul class="step-checks">
+      <li>Tipo: NC, Observación u Oportunidad de Mejora</li>
+      <li>Origen: auditoría, cliente, proceso interno…</li>
+      <li>Área, proceso y fecha de detección</li>
+      <li>Norma aplicable y cláusula específica</li>
+      <li>Nivel de riesgo: Bajo / Medio / Alto / Crítico</li>
+      <li>Evidencia inicial adjunta</li>
+      <li>Responsable asignado confirma por correo</li>
+      <li>Notifica a procesos relacionados automáticamente</li>
+    </ul>
+    <div class="step-footer">
+      <span class="step-ia">IA clasifica dimensión y riesgo</span>
+      <span class="step-role">Cualquier colaborador</span>
+    </div>
+  </div>
+
+  <!-- PASO 2 -->
+  <div class="step-col step-2">
+    <div class="step-badge">PASO 2</div>
+    <span class="step-icon">🛠️</span>
+    <div class="step-title">Corrección inmediata</div>
+    <div class="step-desc">Acción para eliminar o contener el hallazgo mientras se investigan las causas. Se registra lo que se hizo y el resultado obtenido.</div>
+    <ul class="step-checks">
+      <li>Acción tomada para controlar el hallazgo</li>
+      <li>Responsable y fecha de la acción</li>
+      <li>Resultado de la corrección</li>
+      <li>Descripción de la contención del riesgo</li>
+      <li>¿Requirió parada de operación?</li>
+    </ul>
+    <div class="step-footer">
+      <span class="step-ia" style="color:#64748b">Sin IA en este paso</span>
+      <span class="step-role">Responsable asignado</span>
+    </div>
+  </div>
+
+  <!-- PASO 3 -->
+  <div class="step-col step-3">
+    <div class="step-badge">PASO 3</div>
+    <span class="step-icon">🔬</span>
+    <div class="step-title">Análisis de causas</div>
+    <div class="step-desc">La IA selecciona la metodología más adecuada y construye el diagrama. El responsable revisa y edita antes de avanzar.</div>
+    <ul class="step-checks">
+      <li>Ishikawa 6M → hallazgos complejos / múltiples causas</li>
+      <li>5 Por Qués → causa única y proceso definido</li>
+      <li>IA genera causas y subcausas por categoría</li>
+      <li>Causa raíz final — editable y aprobable</li>
+      <li>Factores contribuyentes identificados</li>
+      <li>Participan responsables de procesos relacionados</li>
+    </ul>
+    <div class="step-footer">
+      <span class="step-ia">IA genera el análisis completo</span>
+      <span class="step-role">Responsable asignado</span>
+    </div>
+  </div>
+
+  <!-- PASO 4 -->
+  <div class="step-col step-4">
+    <div class="step-badge">PASO 4</div>
+    <span class="step-icon">⚡</span>
+    <div class="step-title">Acciones correctivas</div>
+    <div class="step-desc">La IA propone acciones organizadas por jerarquía de controles. El responsable asigna personas, plazos y determina si aplica MoC.</div>
+    <ul class="step-checks">
+      <li>Eliminación del origen del problema</li>
+      <li>Sustitución por alternativa más segura</li>
+      <li>Controles técnicos / ingeniería</li>
+      <li>Controles administrativos y formación</li>
+      <li>EPP (solo ISO 45001 / Ley 29783)</li>
+      <li>Plan de formación generado con IA</li>
+      <li>Plan de comunicación generado con IA</li>
+      <li>MoC si las acciones implican cambios al SGI</li>
+    </ul>
+    <div class="step-footer">
+      <span class="step-ia">IA sugiere acciones por jerarquía</span>
+      <span class="step-role">Responsable asignado</span>
+    </div>
+  </div>
+
+  <!-- PASO 5 -->
+  <div class="step-col step-5">
+    <div class="step-badge">PASO 5</div>
+    <span class="step-icon">✅</span>
+    <div class="step-title">Verificación de eficacia</div>
+    <div class="step-desc">El responsable asigna un verificador especializado que confirma si las acciones eliminaron la causa raíz. Recibe enlace personal por correo.</div>
+    <ul class="step-checks">
+      <li>Resultado: Eficaz / Parcialmente eficaz / No eficaz</li>
+      <li>Período de observación (mín. 30 días para riesgo Alto)</li>
+      <li>Descripción de cómo se verificó</li>
+      <li>Evidencias adjuntas (PDF, imagen, Excel)</li>
+      <li>Verificador recibe notificación automática</li>
+      <li>Si no es eficaz → nuevo ciclo de análisis</li>
+    </ul>
+    <div class="step-footer">
+      <span class="step-ia" style="color:#64748b">Sin IA en este paso</span>
+      <span class="step-role">Verificador especializado</span>
+    </div>
+  </div>
+
+  <!-- PASO 6 -->
+  <div class="step-col step-6">
+    <div class="step-badge">PASO 6</div>
+    <span class="step-icon">🏆</span>
+    <div class="step-title">Cierre y lecciones aprendidas</div>
+    <div class="step-desc">La IA redacta las lecciones con el contexto completo del expediente. El responsable aprueba, documenta el impacto en el SGI y firma el cierre.</div>
+    <ul class="step-checks">
+      <li>Lecciones aprendidas generadas con IA + revisión humana</li>
+      <li>¿Actualizar evaluación de riesgos?</li>
+      <li>¿Actualizar información documentada del SGI?</li>
+      <li>Controles Anexo A afectados (ISO 27001)</li>
+      <li>Decisión sobre Gestión del Cambio (MoC)</li>
+      <li>Firma del Responsable del SGI</li>
+      <li>PDF completo generado automáticamente</li>
+      <li>Notificación de cierre a todos los involucrados</li>
+    </ul>
+    <div class="step-footer">
+      <span class="step-ia">IA sugiere lecciones aprendidas</span>
+      <span class="step-role">Responsable SGI</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- INFO BAR -->
+<div class="info-bar">
+
+  <!-- ¿Para qué sirve? -->
+  <div class="info-block">
+    <h4>🚨 ¿Para qué sirve una NC?</h4>
+    <p>Cuando algo no cumple con un requisito — una norma ISO, un procedimiento interno, una ley — hay que registrarlo, investigar la causa raíz y tomar acciones para que no vuelva a ocurrir. <strong>No registrar una NC no la hace desaparecer: la hace invisible y repetible.</strong> GOSST NC convierte ese proceso en un flujo guiado, trazable y con soporte de IA.</p>
+    <div class="normas" style="margin-top:10px">
+      <span class="norma-badge">ISO 9001</span>
+      <span class="norma-badge">ISO 14001</span>
+      <span class="norma-badge">ISO 45001</span>
+      <span class="norma-badge">ISO 27001</span>
+      <span class="norma-badge">ISO 37001</span>
+      <span class="norma-badge">Ley 29783</span>
+    </div>
+  </div>
+
+  <!-- Tipos de hallazgo -->
+  <div class="info-block">
+    <h4>📋 Tipos de hallazgo</h4>
+    <p style="margin-bottom:8px"><strong>No Conformidad</strong> — Incumplimiento de un requisito. Requiere corrección inmediata + acciones correctivas.</p>
+    <p style="margin-bottom:8px"><strong>No Conformidad Potencial</strong> — Podría ocurrir si no se actúa. Acción preventiva.</p>
+    <p style="margin-bottom:8px"><strong>Observación</strong> — Desviación aislada sin evidencia suficiente para declarar NC. Seguimiento.</p>
+    <p><strong>Oportunidad de Mejora</strong> — Sin incumplimiento, pero hay margen de mejora en el desempeño.</p>
+  </div>
+
+  <!-- ¿Quiénes participan? -->
+  <div class="info-block">
+    <h4>👥 ¿Quiénes participan?</h4>
+    <div class="participants-grid">
+      <div class="participant">
+        <div class="participant-dot" style="background:#1d4ed8"></div>
+        <div>
+          <div class="participant-name">Cualquier colaborador</div>
+          <div class="participant-desc">Abre el expediente y reporta el hallazgo</div>
+        </div>
+      </div>
+      <div class="participant">
+        <div class="participant-dot" style="background:#7c3aed"></div>
+        <div>
+          <div class="participant-name">Responsable asignado</div>
+          <div class="participant-desc">Acepta responsabilidad y conduce los pasos 2–6</div>
+        </div>
+      </div>
+      <div class="participant">
+        <div class="participant-dot" style="background:#0d9488"></div>
+        <div>
+          <div class="participant-name">Responsable de proceso</div>
+          <div class="participant-desc">Confirma si la NC aplica en su área</div>
+        </div>
+      </div>
+      <div class="participant">
+        <div class="participant-dot" style="background:#db2777"></div>
+        <div>
+          <div class="participant-name">Verificador</div>
+          <div class="participant-desc">Confirma la eficacia de las acciones (Paso 5)</div>
+        </div>
+      </div>
+      <div class="participant">
+        <div class="participant-dot" style="background:#d97706"></div>
+        <div>
+          <div class="participant-name">Gerente General</div>
+          <div class="participant-desc">Recibe alertas de riesgo Alto/Crítico y aprueba excepciones MoC</div>
+        </div>
+      </div>
+      <div class="participant">
+        <div class="participant-dot" style="background:#16a34a"></div>
+        <div>
+          <div class="participant-name">Responsable SGI</div>
+          <div class="participant-desc">Firma el cierre y gestiona el impacto en el sistema</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="cta-url">moc.gosst.io/nc</div>
+    <div class="cta-sub">Abre tu primera NC aquí</div>
+    <hr style="border-color:#1e3a8a; margin: 8px 0">
+    <div class="cta-normas">
+      ISO 45001 · ISO 9001 · ISO 14001<br>
+      ISO 27001 · ISO 37001 · Ley 29783
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
