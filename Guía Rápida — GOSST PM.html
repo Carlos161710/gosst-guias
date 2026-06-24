@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)file:///Users/carlosaramburuguarda/Downloads/pm.html -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía Rápida — GOSST PM</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #1a2744;
+      --accent:  #2563eb;
+      --green:   #16a34a;
+      --amber:   #d97706;
+      --muted:   #6b7280;
+      --border:  #e5e7eb;
+      --bg:      #f9fafb;
+      --white:   #ffffff;
+      --text:    #111827;
+      --text2:   #374151;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* ── Top bar ─────────────────────────────────────────── */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 24px;
+      background: var(--navy);
+      color: #fff;
+    }
+    .topbar-left { display: flex; align-items: center; gap: 10px; }
+    .topbar-logo {
+      width: 32px; height: 32px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 14px;
+    }
+    .topbar-name { font-weight: 700; font-size: 14px; }
+    .topbar-sub  { font-size: 11px; opacity: 0.5; }
+    .topbar-badge {
+      font-size: 10px; font-weight: 700; letter-spacing: 1px;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 4px; padding: 4px 10px; color: rgba(255,255,255,0.8);
+    }
+
+    /* ── Hero ────────────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(160deg, #1e3a6e 0%, #1a2744 60%, #0f172a 100%);
+      color: #fff;
+      text-align: center;
+      padding: 40px 24px 36px;
+    }
+    .hero h1 {
+      font-size: clamp(20px, 3.5vw, 28px);
+      font-weight: 800;
+      line-height: 1.2;
+      max-width: 700px;
+      margin: 0 auto 10px;
+    }
+    .hero p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.55;
+    }
+
+    /* ── Steps grid: 6 cols ──────────────────────────────── */
+    .steps-wrap {
+      padding: 28px 16px 0;
+      overflow-x: auto;
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(190px, 1fr));
+      gap: 12px;
+      min-width: 1100px;
+    }
+
+    .step-col {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .step-col-head {
+      padding: 14px 14px 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .step-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .step-icon { font-size: 24px; margin-bottom: 6px; display: block; }
+    .step-title { font-size: 13px; font-weight: 700; color: var(--text); line-height: 1.3; margin-bottom: 4px; }
+    .step-desc  { font-size: 11px; color: var(--muted); line-height: 1.45; }
+
+    .step-col-body {
+      padding: 12px 14px;
+      flex: 1;
+    }
+    .step-col-body ul { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+    .step-col-body li {
+      display: flex; gap: 6px;
+      font-size: 11.5px; color: var(--text2); line-height: 1.4;
+    }
+    .step-col-body li::before {
+      content: '✓'; color: var(--green); font-weight: 700;
+      flex-shrink: 0; font-size: 10px; margin-top: 1px;
+    }
+
+    .step-col-foot {
+      padding: 8px 14px;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 4px;
+      background: #fafafa;
+    }
+    .badge-ia   { font-size: 10px; font-weight: 600; color: #92400e; }
+    .badge-no   { font-size: 10px; font-weight: 600; color: var(--muted); }
+    .badge-auto { font-size: 10px; font-weight: 600; color: var(--green); }
+    .badge-ia::before   { content: '+ '; }
+    .badge-no::before   { content: '+ '; }
+    .badge-auto::before { content: '+ '; }
+
+    .resp-badge {
+      font-size: 10px; color: #1e40af; font-weight: 600;
+      display: flex; align-items: center; gap: 3px;
+    }
+    .resp-badge::before { content: '👤'; font-size: 10px; }
+
+    /* ── Bottom sections ─────────────────────────────────── */
+    .bottom-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr auto;
+      gap: 16px;
+      padding: 20px 16px 28px;
+      align-items: start;
+      min-width: 1100px;
+    }
+
+    .info-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+    }
+    .info-box h3 {
+      font-size: 12px; font-weight: 700; margin-bottom: 10px;
+      display: flex; align-items: center; gap: 6px;
+      color: var(--text);
+    }
+    .info-box p { font-size: 12px; color: var(--text2); line-height: 1.55; }
+    .info-box p strong { color: var(--text); }
+
+    .types-box { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+    .types-box h3 { font-size: 12px; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+    .type-row { margin-bottom: 7px; }
+    .type-tag { font-size: 11px; font-weight: 700; color: #1e40af; }
+    .type-desc { font-size: 11px; color: var(--text2); }
+
+    .roles-box { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+    .roles-box h3 { font-size: 12px; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+    .role-row { margin-bottom: 8px; }
+    .role-name { font-size: 11px; font-weight: 700; color: #1e40af; margin-bottom: 2px; }
+    .role-desc { font-size: 11px; color: var(--text2); }
+
+    .cta-box {
+      background: var(--navy);
+      border-radius: 10px;
+      padding: 20px 18px;
+      color: #fff;
+      text-align: center;
+      min-width: 160px;
+    }
+    .cta-url  { font-size: 15px; font-weight: 800; margin-bottom: 10px; line-height: 1.2; }
+    .cta-link { font-size: 11px; color: rgba(255,255,255,0.65); margin-bottom: 14px; }
+    .cta-btn  {
+      display: inline-block;
+      background: #fff; color: var(--navy);
+      font-size: 11px; font-weight: 700;
+      border-radius: 6px; padding: 7px 14px;
+      text-decoration: none;
+    }
+    .cta-norms {
+      margin-top: 12px;
+      display: flex; flex-wrap: wrap; gap: 4px; justify-content: center;
+    }
+    .norm-tag {
+      font-size: 9px; font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 4px; padding: 2px 6px;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .bottom-scroll { overflow-x: auto; }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <div class="topbar-logo">G</div>
+      <div>
+        <div class="topbar-name">GOSST PM</div>
+        <div class="topbar-sub">gosst.io · Aswan Technologies</div>
+      </div>
+    </div>
+    <div class="topbar-badge">+ CON INTELIGENCIA ARTIFICIAL INTEGRADA</div>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>¿Cómo funciona la gestión de proyectos?</h1>
+    <p>Guía rápida para Project Managers — crea, ejecuta y cierra proyectos de forma trazable,<br>con visibilidad para el cliente y soporte de IA en 6 etapas.</p>
+  </div>
+
+  <!-- Steps -->
+  <div class="steps-wrap">
+    <div class="steps-grid">
+
+      <!-- PASO 1 -->
+      <div class="step-col">
+        <div class="step-col-head">
+          <div class="step-label">PASO 1</div>
+          <span class="step-icon">📋</span>
+          <div class="step-title">Creación del proyecto</div>
+          <div class="step-desc">El PM abre el expediente, define el alcance y activa el proyecto en GOSST MoC.</div>
+        </div>
+        <div class="step-col-body">
+          <ul>
+            <li>Tipo: SGI, SaaS GOSST, SaaS GOLEN, desarrollo interno o a solicitud de cliente</li>
+            <li>Nombre, descripción, cliente y responsable PM</li>
+            <li>Fechas de inicio y fin estimadas</li>
+            <li>Nivel de riesgo: Bajo / Medio / Alto / Crítico</li>
+            <li>Referencia correlativa automática (ej. PM-AT-2026-001)</li>
+            <li>Plantilla de fases disponible según tipo de proyecto</li>
+            <li>Estado inicial Borrador → activa a Activo</li>
+            <li>Notificación al PM responsable al activar</li>
+          </ul>
+        </div>
+        <div class="step-col-foot">
+          <span class="badge-no">Sin IA en este paso</span>
+          <span class="resp-badge">PM</span>
+        </div>
+      </div>
+
+      <!-- PASO 2 -->
+      <div class="step-col">
+        <div class="step-col-head">
+          <div class="step-label">PASO 2</div>
+          <span class="step-icon">🗂️</span>
+          <div class="step-title">Planificación de fases y tareas</div>
+          <div class="step-desc">El PM estructura el proyecto en fases y asigna tareas con responsables y plazos.</div>
+        </div>
+        <div class="step-col-body">
+          <ul>
+            <li>Fases con nombre, fecha inicio y fecha fin</li>
+            <li>Tareas: responsable, vencimiento, prioridad</li>
+            <li>Peso de tarea: Normal (×1), Importante (×2), Crítica (×3)</li>
+            <li>Avance calculado automáticamente por peso de tareas</li>
+            <li>Ajuste manual con justificación obligatoria</li>
+            <li>Plantillas: SGI 9 fases / GOSST 5 fases / GOLEN 6 fases / Dev 4 fases</li>
+            <li>IA analiza riesgos al solicitarlo: categoría, probabilidad, impacto y mitigación</li>
+            <li>Nivel de riesgo sugerido por IA — editable por el PM</li>
+          </ul>
+        </div>
+        <div class="step-col-foot">
+          <span class="badge-ia">IA analiza riesgos al solicitarlo</span>
+          <span class="resp-badge">PM</span>
+        </div>
+      </div>
+
+      <!-- PASO 3 -->
+      <div class="step-col">
+        <div class="step-col-head">
+          <div class="step-label">PASO 3</div>
+          <span class="step-icon">⚡</span>
+          <div class="step-title">Ejecución y seguimiento</div>
+          <div class="step-desc">El equipo actualiza tareas y el PM monitorea el avance con alertas automáticas.</div>
+        </div>
+        <div class="step-col-body">
+          <ul>
+            <li>Estados: Pendiente / En progreso / Bloqueada / Completada / Cancelada</li>
+            <li>Avance del proyecto recalculado automáticamente</li>
+            <li>Alertas: tareas próximas a vencer (3 días) y vencidas</li>
+            <li>RFC ante cambios de alcance, plazo o costo</li>
+            <li>Flujo RFC: Solicitado → Revisión → Aprobado / Rechazado → Implementado</li>
+            <li>Vinculación a MoC si el cambio requiere gestión formal (PR.07)</li>
+            <li>Notificación automática al PM ante cada nuevo RFC</li>
+            <li>IA genera resumen ejecutivo al solicitarlo: estado, logros, alertas y próximos pasos</li>
+          </ul>
+        </div>
+        <div class="step-col-foot">
+          <span class="badge-ia">IA genera resumen ejecutivo</span>
+          <span class="resp-badge">PM / Responsable de tarea</span>
+        </div>
+      </div>
+
+      <!-- PASO 4 -->
+      <div class="step-col">
+        <div class="step-col-head">
+          <div class="step-label">PASO 4</div>
+          <span class="step-icon">✅</span>
+          <div class="step-title">Entregables y aprobaciones</div>
+          <div class="step-desc">El PM registra entregables y el revisor aprueba o rechaza desde su enlace personal.</div>
+        </div>
+        <div class="step-col-body">
+          <ul>
+            <li>Entregable: nombre, fase, responsable, revisor y fecha</li>
+            <li>Token único por entregable — válido 30 días</li>
+            <li>Revisor recibe email con enlace personal sin login</li>
+            <li>Decisión: Aprobar o Rechazar (rechazo exige comentario)</li>
+            <li>Registro con fecha, hora y email para auditoría</li>
+            <li>Notificación al responsable al recibir la decisión</li>
+            <li>Entregable rechazado → opción de generar NC vinculada</li>
+            <li>Estados: Pendiente / En revisión / Aprobado / Rechazado</li>
+          </ul>
+        </div>
+        <div class="step-col-foot">
+          <span class="badge-no">Sin IA en este paso</span>
+          <span class="resp-badge">PM / Revisor</span>
+        </div>
+      </div>
+
+      <!-- PASO 5 -->
+      <div class="step-col">
+        <div class="step-col-head">
+          <div class="step-label">PASO 5</div>
+          <span class="step-icon">🔗</span>
+          <div class="step-title">No conformidades y cambios</div>
+          <div class="step-desc">Los rechazos generan NCs trazables y los cambios de alcance se gestionan como RFC o MoC.</div>
+        </div>
+        <div class="step-col-body">
+          <ul>
+            <li>NC generada desde entregable rechazado con un clic</li>
+            <li>NC vinculada al proyecto y al entregable correspondiente</li>
+            <li>La NC sigue el flujo completo de GOSST NC</li>
+            <li>RFC por alcance, plazo o costo — gestionado por el PM</li>
+            <li>RFC puede vincularse a MoC formal si aplica</li>
+            <li>MoC referenciado en el expediente del proyecto</li>
+            <li>Historial completo de RFCs con estado y resolución</li>
+            <li>Sección de NCs vinculadas visible en la ficha del proyecto</li>
+          </ul>
+        </div>
+        <div class="step-col-foot">
+          <span class="badge-no">Sin IA en este paso</span>
+          <span class="resp-badge">PM / Responsable de proceso</span>
+        </div>
+      </div>
+
+      <!-- PASO 6 -->
+      <div class="step-col">
+        <div class="step-col-head">
+          <div class="step-label">PASO 6</div>
+          <span class="step-icon">🏆</span>
+          <div class="step-title">Cierre y lecciones aprendidas</div>
+          <div class="step-desc">La IA redacta las lecciones con el contexto completo. El PM cierra y exporta el expediente.</div>
+        </div>
+        <div class="step-col-body">
+          <ul>
+            <li>Verificar entregables aprobados, tareas resueltas y RFCs cerrados</li>
+            <li>Cambiar estado a Completado para habilitar el cierre</li>
+            <li>IA genera lecciones por categoría: Planificación, Ejecución, Comunicación, Cambios, Técnico, Cliente</li>
+            <li>Cada lección: título, descripción y recomendación futura</li>
+            <li>Recomendaciones generales para el tipo de proyecto</li>
+            <li>PDF Ejecutivo para el cliente: portada, fases, entregables, análisis IA</li>
+            <li>PDF Expediente Completo: tareas, RFCs y lecciones aprendidas</li>
+            <li>Expediente conservado 5 años · Notificación de cierre automática</li>
+          </ul>
+        </div>
+        <div class="step-col-foot">
+          <span class="badge-ia">IA genera lecciones aprendidas</span>
+          <span class="resp-badge">PM</span>
+        </div>
+      </div>
+
+    </div><!-- /steps-grid -->
+  </div><!-- /steps-wrap -->
+
+  <!-- Bottom sections -->
+  <div class="bottom-scroll">
+    <div class="bottom-wrap">
+
+      <!-- ¿Para qué sirve? -->
+      <div class="info-box">
+        <h3>📌 ¿Para qué sirve el módulo PM?</h3>
+        <p>Gestionar un proyecto en Trello o por email no deja trazabilidad, no tiene historial de cambios y no vincula entregables con aprobaciones ni no conformidades. <strong>GOSST PM convierte eso en un expediente digital estructurado, con IA integrada y PDF descargable.</strong> Cada decisión, cambio y aprobación queda registrado.</p>
+      </div>
+
+      <!-- Tipos de proyecto -->
+      <div class="types-box">
+        <h3>📂 Tipos de proyecto</h3>
+        <div class="type-row"><div class="type-name" style="font-size:11px;font-weight:700;color:#1e40af;">Implementación SGI</div><div class="type-desc">Normas ISO: 9001, 45001, 14001, 27001 — con GESTOP</div></div>
+        <div class="type-row"><div class="type-name" style="font-size:11px;font-weight:700;color:#1e40af;">Implementación SaaS GOSST</div><div class="type-desc">Onboarding de nuevos clientes en la plataforma</div></div>
+        <div class="type-row"><div class="type-name" style="font-size:11px;font-weight:700;color:#1e40af;">Implementación SaaS GOLEN</div><div class="type-desc">Onboarding con visita presencial incluida</div></div>
+        <div class="type-row"><div class="type-name" style="font-size:11px;font-weight:700;color:#1e40af;">Desarrollo interno</div><div class="type-desc">Features o fixes por decisión de Aswan</div></div>
+        <div class="type-row"><div class="type-name" style="font-size:11px;font-weight:700;color:#1e40af;">Desarrollo a solicitud de cliente</div><div class="type-desc">Cambios o mejoras encargados por un cliente</div></div>
+      </div>
+
+      <!-- Roles -->
+      <div class="roles-box">
+        <h3>👥 ¿Quiénes participan?</h3>
+        <div class="role-row"><div class="role-name">PM (Project Manager)</div><div class="role-desc">Crea el proyecto, planifica y coordina el cierre</div></div>
+        <div class="role-row"><div class="role-name">Responsable de tarea</div><div class="role-desc">Ejecuta tareas y actualiza su estado</div></div>
+        <div class="role-row"><div class="role-name">Revisor de entregable</div><div class="role-desc">Aprueba o rechaza desde enlace personal sin login</div></div>
+        <div class="role-row"><div class="role-name">Solicitante de RFC</div><div class="role-desc">Registra cambios de alcance, plazo o costo</div></div>
+        <div class="role-row"><div class="role-name">Responsable SGI</div><div class="role-desc">Coordina impacto en el sistema y vinculación MoC</div></div>
+        <div class="role-row"><div class="role-name">GOSST MoC (sistema)</div><div class="role-desc">Notifica, calcula avances y genera el PDF</div></div>
+      </div>
+
+      <!-- CTA -->
+      <div class="cta-box">
+        <div class="cta-url">moc.gosst.io/pm</div>
+        <div class="cta-link">Abre tu primer proyecto aquí</div>
+        <a class="cta-btn" href="https://moc.gosst.io/pm">Ir al módulo PM</a>
+        <div class="cta-norms">
+          <span class="norm-tag">ISO 9001</span>
+          <span class="norm-tag">ISO 14001</span>
+          <span class="norm-tag">ISO 45001</span>
+          <span class="norm-tag">ISO 27001</span>
+          <span class="norm-tag">Ley 29783</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+</body></html>
